@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "playwright-assignment"
+version = "0.1.0"
+description = "Software Engineer in Test Assignment: Test Automation for E-commerce Website"
+authors = ["GinaKompocholi <gina.kompocholi@orfium.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+playwright = "^1.49.1"
+pytest = "^8.3.4"
+pytest-bdd = "^8.1.0"
+allure-pytest = "^2.13.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
