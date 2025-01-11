@@ -1,0 +1,6 @@
+.idea/*
+reports/
+.pytest_cache/
+*.env
+*.log
+playwright_trace_data/
