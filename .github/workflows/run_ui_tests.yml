@@ -27,11 +27,12 @@ jobs:
         with:
           python-version: 3.11
 
-      # Install dependencies using Poetry
+      # Install dependencies and Playwright browsers
       - name: Install dependencies
         run: |
           pip install poetry
           poetry install
+          poetry run playwright install --with-deps
 
       # Set environment variables from GitHub Secrets
       - name: Set environment variables
