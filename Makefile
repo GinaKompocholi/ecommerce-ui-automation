@@ -1,5 +1,5 @@
-# Variables
 MARKER ?= regression  # Default marker is 'regression'
+BROWSER ?= chromium  # Default browser is 'chromium'
 
 ALLURE_RESULTS_DIR = ui_automation_suite/bdd_tests/reports/allure-results-bdd
 ALLURE_REPORT_DIR = ui_automation_suite/bdd_tests/reports/allure-report-bdd
@@ -12,9 +12,17 @@ help:
 	@echo "  make test         Run tests and generate Allure results"
 	@echo "  make view-report  Generate and open Allure HTML report"
 
-# Run tests with a marker
+# Run tests with a marker in headless mode
 test:
-	pytest -m $(MARKER)
+	pytest -m $(MARKER) --playwright_browser=$(BROWSER)
+
+# Run tests with a marker in headed mode
+test-headed:
+	pytest -m $(MARKER) --headed --playwright_browser=$(BROWSER)
+
+# Run tests in debug mode (headed mode by default)
+test-debug:
+	PWDEBUG=1 pytest -m $(MARKER) --playwright_browser=$(BROWSER)
 
 # Run pre-commit hooks
 lint:

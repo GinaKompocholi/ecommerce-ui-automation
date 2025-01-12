@@ -75,16 +75,54 @@ The suite is built using the following technologies:
    ```bash
     make test
     ```
-4. **Run a specific test**:
-   ```bash
-   make test "MARKER=standard_user"
-   ```
-5. **View the report**:
+4. **View the report**:
    ```bash
    make view-report
    ```
    Then click on the link to view the report in the browser
 ---
+### Ways to Run Tests
+
+The test suite offers various execution modes for flexibility.
+
+1. **Run the complete test regression suite**
+   1. Headless Mode
+      ```bash
+      make test
+      ```
+   2. Headed Mode
+      ```bash
+      make test-headed
+      ```
+2. **Run a specific test**:
+   1. Headless Mode
+      ```bash
+      make test "MARKER=login_success"
+      ```
+   2. Headed Mode
+      ```bash
+      make test-headed "MARKER=login_success"
+      ```
+
+3. **Change Browser (default: chromium)**
+   1. Headless Mode
+      ```bash
+      make test "BROWSER=firefox"
+      ```
+   2. Headed Mode
+      ```bash
+      make test-headed "BROWSER=firefox"
+      ```
+4. **Debug Mode (Runs only in headed mode)**
+   1. Run step-by-step:
+      ```bash
+      make test-debug
+      ```
+   2. Combine with specific marker and browser:
+      ```bash
+      make test-debug "MARKER=login_success" "BROWSER=firefox"
+      ```
+
 ## Additional Notes
 
 ### Key Features
