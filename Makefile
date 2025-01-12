@@ -1,5 +1,5 @@
 MARKER ?= regression  # Default marker is 'regression'
-BROWSER ?= chromium  # Default browser is 'chromium'
+BROWSER ?= chrome  # Default browser is 'chromium'
 
 ALLURE_RESULTS_DIR = ui_automation_suite/bdd_tests/reports/allure-results-bdd
 ALLURE_REPORT_DIR = ui_automation_suite/bdd_tests/reports/allure-report-bdd
