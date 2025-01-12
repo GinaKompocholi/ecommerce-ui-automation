@@ -71,14 +71,19 @@ The suite is built using the following technologies:
    ```bash
    poetry install
    ```
-3. **Run the test suite**:
+3. **Run the complete test suite**:
    ```bash
-    pytest -m {marker}
+    make test
     ```
-4. **View the report**:
+4. **Run a specific test**:
    ```bash
-   allure serve reports/
+   make test "MARKER=standard_user"
    ```
+5. **View the report**:
+   ```bash
+   make view-report
+   ```
+   Then click on the link to view the report in the browser
 ---
 ## Additional Notes
 
