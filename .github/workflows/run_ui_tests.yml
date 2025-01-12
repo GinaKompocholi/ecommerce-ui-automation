@@ -34,6 +34,14 @@ jobs:
           poetry install
           poetry run playwright install --with-deps
 
+      # Step 4: Install Allure CLI
+      - name: Install Allure CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openjdk-11-jre-headless  # Required for Allure
+          curl -sL https://github.com/allure-framework/allure2/releases/download/2.20.1/allure-2.20.1.tgz | tar -xz -C /opt/
+          sudo ln -s /opt/allure-2.20.1/bin/allure /usr/bin/allure
+
       # Set environment variables from GitHub Secrets
       - name: Set environment variables
         run: echo "PASSWORD=${{ secrets.PASSWORD }}" >> $GITHUB_ENV
