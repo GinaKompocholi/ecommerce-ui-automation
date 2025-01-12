@@ -69,13 +69,13 @@ def page(request, browser):
 
 def get_browser(request, playwright):
     browser_type = request.config.getoption("--playwright_browser").lower()
-    # headless = not request.config.getoption("--headed")
+    headless = not request.config.getoption("--headed")
 
     if browser_type in ["chrome", "firefox"]:
         browser_launcher = getattr(
             playwright, browser_type if browser_type == "firefox" else "chromium"
         )
-        browser = browser_launcher.launch(headless=False, slow_mo=666)
+        browser = browser_launcher.launch(headless=headless, slow_mo=666)
     else:
         sys.exit("Provided browser not supported")
 
@@ -139,4 +139,10 @@ def pytest_addoption(parser):
         choices=["chrome", "firefox"],
         default="chrome",
         help="Specify the browser to use for Playwright tests",
+    )
+    parser.addoption(
+        "--headed",
+        action="store_true",
+        default=False,
+        help="Run tests in headed mode",
     )
