@@ -12,6 +12,9 @@ on:
     branches:
       - "**" # Run on pull requests for all branches
 
+permissions:
+  contents: write
+
 jobs:
   run-tests:
     runs-on: ubuntu-latest
