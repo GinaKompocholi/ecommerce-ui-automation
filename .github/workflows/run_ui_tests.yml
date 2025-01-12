@@ -62,20 +62,23 @@ jobs:
           poetry run make test "MARKER=$marker"
 
 
-      # Step 5: Generate Allure HTML report using Makefile
+      # enerate Allure HTML report using Makefile
       - name: Generate Allure Report
+        if: always()  # Ensures this step runs even if the previous step fails
         run: |
           poetry run make generate-report
 
-      # Step 6: Upload Allure Report as an artifact
+      # Option1: Upload Allure Report as an artifact to download and view
       - name: Upload Allure Report
+        if: always()  # Ensures this step runs even if the previous step fails
         uses: actions/upload-artifact@v3
         with:
           name: allure-report
           path: ui_automation_suite/bdd_tests/reports/allure-report-bdd
 
-      # Step 7: Deploy Allure Report to GitHub Pages
+      # Option2: Deploy Allure Report to GitHub Pages for easy access
       - name: Deploy Allure Report to GitHub Pages
+        if: always()  # Ensures this step runs even if the previous step fails
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
