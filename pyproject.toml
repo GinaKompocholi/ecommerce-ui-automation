@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "playwright-assignment"
+name = "ui_automation_suite"
 version = "0.1.0"
 description = "Software Engineer in Test Assignment: Test Automation for E-commerce Website"
 authors = ["GinaKompocholi <gina.kompocholi@orfium.com>"]
@@ -10,8 +10,17 @@ python = "^3.11"
 playwright = "^1.49.1"
 pytest = "^8.3.4"
 pytest-bdd = "^8.1.0"
-allure-pytest = "^2.13.5"
+python-dotenv = "^1.0.1"
+allure-pytest-bdd = "^2.13.5"
 
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^4.0.1"
+autopep8 = "^2.3.1"
+black = "<23.3.0"
+
+[tool.isort]
+profile = "black"
 
 [build-system]
 requires = ["poetry-core"]
