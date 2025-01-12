@@ -1,0 +1,49 @@
+name: Run UI Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      marker:
+        description: "Test marker to run specific tests"
+        required: false
+        default: "regression"
+
+  pull_request:
+    branches:
+      - "**"  # Run on pull requests for all branches
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      # Install dependencies using Poetry
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          poetry install
+
+      # Run pytest with the provided marker (workflow_dispatch) or default to regression (pull_request)
+      - name: Run tests
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            marker="${{ github.event.inputs.marker }}"
+            if [ -z "$marker" ]; then
+              marker="regression"
+            fi
+            echo "Running tests with marker: $marker"
+          else
+            marker="regression"
+            echo "Pull request detected. Running default regression tests."
+          fi
+          poetry run pytest -m "$marker"
