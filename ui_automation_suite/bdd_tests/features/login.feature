@@ -4,7 +4,7 @@ Feature: Authentication
   Background:
     Given the login page is displayed
 
-  @standard_user
+  @login_success @positive
   Scenario: User successfully logs in
     When user tries to login with standard_user
     Then user is redirected to the products page
@@ -31,6 +31,7 @@ Feature: Authentication
       | username   | missing username |
       | password   | missing password |
 
+#  TODO: Add performance test
 #  @performance_glitch_user
 #  Scenario: User can't log in without providing password
 #    When user tries to login with username performance_glitch_user and password secret_sauce
