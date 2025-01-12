@@ -94,7 +94,8 @@ The suite is built using the following technologies:
 ---
 ### Hosted Allure Report
 
-For executions triggered via CI (e.g., [GitHub Actions](https://github.com/GinaKompocholi/ecommerce-ui-automation/actions/workflows/run_ui_tests.yml)), an Allure report is automatically generated and hosted online.
+
+For executions triggered by [GitHub Actions](https://github.com/GinaKompocholi/ecommerce-ui-automation/actions/workflows/run_ui_tests.yml), Allure report is automatically generated and hosted online.
 You can view the latest CI-generated report [here](https://ginakompocholi.github.io/ecommerce-ui-automation/)
 ---
 ### Ways to Run Tests
