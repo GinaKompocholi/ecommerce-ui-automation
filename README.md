@@ -38,8 +38,6 @@ This automation suite validates critical functionalities of the [SauceDemo](http
    - Handling the menu in different contexts, e.g., cart and checkout pages.
    - Ensuring state reset functionality works as intended.
 
-Each test is designed to ensure coverage of happy paths, edge cases, and negative scenarios.
-
 ---
 
 ## Project Structure
@@ -108,12 +106,12 @@ The suite is built using the following technologies:
     ```
 4. **View the report**:
    ```bash
-   make view-report
+   make generate-and-view-report
    ```
    Then click on the link to view the report in the browser
 ---
 
-### Hosted Allure Report
+#### Hosted Allure Report
 For executions triggered by [GitHub Actions](https://github.com/GinaKompocholi/ecommerce-ui-automation/actions/workflows/run_ui_tests.yml), Allure report is automatically generated and hosted online.
 You can view the latest CI-generated report [here](https://ginakompocholi.github.io/ecommerce-ui-automation/)
 ---
@@ -175,3 +173,4 @@ The test suite offers various execution modes for flexibility.
 - **Automate Local Report Management**: Implement a local mechanism to keep only the latest test report for easy access while automatically deleting older reports to reduce clutter.
 - **Centralize Report Storage for Historical Analysis**:  Implement a system to upload and store test results in a centralized location (e.g., S3 bucket, database, or CI tool dashboard) to maintain a history of test executions, allowing trend analysis and debugging over time.
 - **Cross-Device Testing**: Extend test suite to simulate and verify functionality across different device types (e.g. mobile, tablet)
+- **Standardized Assertion Library**: Create a dedicated and reusable library for assertion comparisons to promote consistency, maintainability, and readability across tests.
