@@ -3,12 +3,12 @@ from time import time
 
 from pytest_bdd import given, parsers, then, when
 
+from ui_automation_suite.bdd_tests.page_objects.burger_menu import BurgerMenu
 from ui_automation_suite.bdd_tests.page_objects.login_page import LoginPage
 from ui_automation_suite.bdd_tests.page_objects.products_page import ProductPage
 from ui_automation_suite.bdd_tests.page_objects.shopping_cart_page import (
     ShoppingCartPage,
 )
-from ui_automation_suite.bdd_tests.page_objects.burger_menu import BurgerMenu
 from ui_automation_suite.settings.config import AppEnvSettings
 from ui_automation_suite.settings.constants import (
     ALL_PRODUCTS_PAGE,
@@ -54,7 +54,7 @@ def redirection_to_login_page(page, login_page: LoginPage):
 
 @when(parsers.cfparse("user tries to login with {username_type}"))
 def login_with_specific_role(
-        username_type, login_page: LoginPage, app_env_settings: AppEnvSettings, page
+    username_type, login_page: LoginPage, app_env_settings: AppEnvSettings, page
 ):
     username = app_env_settings.get_username(username_type)
     if username is None:
@@ -76,7 +76,7 @@ def login_with_specific_role(
 @then(parsers.cfparse("user is redirected to the products page"))
 def redirection_to_homepage(page):
     assert (
-            ALL_PRODUCTS_PAGE in page.url
+        ALL_PRODUCTS_PAGE in page.url
     ), f"Expected to be on the products page, but was on {page.url}"
     logging.info("User was redirected to the products page")
 
@@ -164,7 +164,7 @@ def view_product_details(product_name, product_page: ProductPage):
 @then(parsers.cfparse("user is redirected to the product details page"))
 def redirection_to_product_details_page(page):
     assert (
-            PRODUCT_DETAILS_PAGE in page.url
+        PRODUCT_DETAILS_PAGE in page.url
     ), f"Expected to be on the product details page, but was on {page.url}"
     logging.info("User was redirected to the products details page")
 
@@ -202,7 +202,7 @@ def cart_contains_products(page_name: str, cart_items_count: int, page):
 
     total_cart_items = len(cart_list.get_all_cart_products())
     assert (
-            total_cart_items == cart_items_count
+        total_cart_items == cart_items_count
     ), f"Expected {cart_items_count} products, but got {total_cart_items}"
     logging.info(f"The {page_name} contains {cart_items_count:d} product(s)")
 
@@ -242,7 +242,7 @@ def product_quantity_in_cart(product_name: str, quantity: int, page_name: str, p
     product = page_obj.cart_list.get_specific_product(product_name, all_products)
     product_quantity_in_cart = page_obj.cart_list.get_product_quantity(product)
     assert (
-            product_quantity_in_cart == quantity
+        product_quantity_in_cart == quantity
     ), f"Unexpected quantity of product in the {page_name}"
     logging.info(
         f"Product {product_name} quantity displayed in {page_name} is as expected."
@@ -309,7 +309,7 @@ def user_removes_product_from_cart(product_name: str, page_name: str, page):
     )
 )
 def product_name_in_cart(
-        product_name: str, product_full_name: str, page_name: str, page
+    product_name: str, product_full_name: str, page_name: str, page
 ):
     # Validate the product name explicitly
     validate_product_name(product_name)

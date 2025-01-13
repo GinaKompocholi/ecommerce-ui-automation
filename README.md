@@ -82,15 +82,31 @@ The suite is built using the following technologies:
 - **CI/CD**: GitHub Actions
 - **Code Quality**: pre-commit hooks (`black`, `isort`) for linting and formatting
 - **Logging**: Python logging for debugging insights
+---
+## Setup and Execution
+
+### Option1: Running Tests in CI
+
+The test suite is integrated with GitHub Actions for Continuous Integration (CI).  
+- **Trigger CI Tests**: 
+  - automatically on pull requests 
+  - manually via [GitHub Actions Workflows](https://github.com/GinaKompocholi/ecommerce-ui-automation/actions/workflows/run_ui_tests.yml)
+- **View Results**:
+  - [Github Pages]:
+    - an Allure report is automatically generated and hosted [here](https://ginakompocholi.github.io/ecommerce-ui-automation/). 
+    - ⚠️Note: Only the latest execution's report will be displayed️
+  - [Github Artifacts]:
+    - the Allure report is also stored as an artifact in the respective GitHub Actions run. You can download and view the report locally.
 
 ---
 
-## Setup and Execution
-### Prerequisites
+### Option2: Running Tests Locally
+
+#### - Prerequisites
 - Python 3.11 or later installed.
 - Poetry installed (for dependency management).
 
-### Steps to Run tests locally
+#### - Steps to Run tests locally
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/yourusername/ecommerce-ui-automation.git
@@ -108,14 +124,9 @@ The suite is built using the following technologies:
    ```bash
    make generate-and-view-report
    ```
-   Then click on the link to view the report in the browser
----
+5. Click on the link to view the report in the browser
 
-#### Hosted Allure Report
-For executions triggered by [GitHub Actions](https://github.com/GinaKompocholi/ecommerce-ui-automation/actions/workflows/run_ui_tests.yml), Allure report is automatically generated and hosted online.
-You can view the latest CI-generated report [here](https://ginakompocholi.github.io/ecommerce-ui-automation/)
----
-### Ways to Run Tests
+#### - Ways to Run Tests
 
 The test suite offers various execution modes for flexibility.
 

@@ -1,12 +1,12 @@
 import pytest
 
+from ui_automation_suite.bdd_tests.page_objects.burger_menu import BurgerMenu
 from ui_automation_suite.bdd_tests.page_objects.checkout_page import CheckoutPage
 from ui_automation_suite.bdd_tests.page_objects.login_page import LoginPage
 from ui_automation_suite.bdd_tests.page_objects.products_page import ProductPage
 from ui_automation_suite.bdd_tests.page_objects.shopping_cart_page import (
     ShoppingCartPage,
 )
-from ui_automation_suite.bdd_tests.page_objects.burger_menu import BurgerMenu
 
 
 @pytest.fixture()
