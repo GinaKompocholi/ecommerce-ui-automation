@@ -12,11 +12,31 @@ The goal of this project is to showcase:
 
 ## Features Tested
 This automation suite validates critical functionalities of the [SauceDemo](https://www.saucedemo.com/) website:
-1. **Authentication**: Login and logout functionality.
-2. **Products Page**: Verifying product listings and navigation.
-3. **Add to Cart**: Adding items to the shopping cart.
-4. **Checkout**: Completing the checkout process.
-5. **Burger Menu**: Validating navigation options.
+1. **Authentication**  
+   - Login and logout functionalities.  
+   - Handling invalid credentials and missing input scenarios.  
+   - Addressing performance issues, such as long login times.  
+
+2. **Products Page**  
+   - Verification of product listings and navigation.  
+   - Sorting products by name and price.  
+   - Adding/removing products to/from the cart.  
+   - Viewing product details.  
+
+3. **Shopping Cart**  
+   - Validating the initial state of an empty cart.  
+   - Adding/removing products and continuing shopping.  
+   - Verifying cart updates and navigation functionality.  
+
+4. **Checkout Process**  
+   - Ensuring mandatory fields are required.  
+   - Validating initial and canceled states at each stage of checkout.  
+   - Providing an overview of selected products before purchase.  
+
+5. **Burger Menu**  
+   - Validating navigation options such as logout, "All Items," and "About."  
+   - Handling the menu in different contexts, e.g., cart and checkout pages.  
+   - Ensuring state reset functionality works as intended.  
 
 Each test is designed to ensure coverage of happy paths, edge cases, and negative scenarios.
 
@@ -152,7 +172,7 @@ The test suite offers various execution modes for flexibility.
 ### Future Improvements
 - **Integrate Visual Testing**: Automate visual regression testing to detect UI inconsistencies and layout shifts effectively.
 - **Extend Test Coverage**: Add more test scenarios for edge cases and negative paths.
-- **Parallelize Test Execution Across Browsers**: Optimize test runtime by running tests simultaneously in multiple browsers (e.g., Chrome, Firefox, Safari). 
+- **Parallelize Test Execution Across Browsers**: Optimize test runtime by running tests simultaneously in multiple browsers (e.g., Chrome, Firefox, Safari).
 - **Automate Local Report Management**: Implement a local mechanism to keep only the latest test report for easy access while automatically deleting older reports to reduce clutter.
 - **Centralize Report Storage for Historical Analysis**:  Implement a system to upload and store test results in a centralized location (e.g., S3 bucket, database, or CI tool dashboard) to maintain a history of test executions, allowing trend analysis and debugging over time.
 - **Cross-Device Testing**: Extend test suite to simulate and verify functionality across different device types (e.g. mobile, tablet)

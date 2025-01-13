@@ -34,7 +34,7 @@ Feature: Authentication
   # Expected: User logs in within acceptable time limits.
   # Actual: Login takes too long with performance_glitch_user.
   @performance_glitch_user @bug
-  Scenario: [BUG] User logs in
+  Scenario: [BUG] User tries to login but it takes too long
     When user tries to login with performance_glitch_user
     Then user is redirected to the products page
 
