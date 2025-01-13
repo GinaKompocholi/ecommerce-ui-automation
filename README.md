@@ -12,31 +12,31 @@ The goal of this project is to showcase:
 
 ## Features Tested
 This automation suite validates critical functionalities of the [SauceDemo](https://www.saucedemo.com/) website:
-1. **Authentication**  
-   - Login and logout functionalities.  
-   - Handling invalid credentials and missing input scenarios.  
-   - Addressing performance issues, such as long login times.  
+1. **Authentication**
+   - Login and logout functionalities.
+   - Handling invalid credentials and missing input scenarios.
+   - Addressing performance issues, such as long login times.
 
-2. **Products Page**  
-   - Verification of product listings and navigation.  
-   - Sorting products by name and price.  
-   - Adding/removing products to/from the cart.  
-   - Viewing product details.  
+2. **Products Page**
+   - Verification of product listings and navigation.
+   - Sorting products by name and price.
+   - Adding/removing products to/from the cart.
+   - Viewing product details.
 
-3. **Shopping Cart**  
-   - Validating the initial state of an empty cart.  
-   - Adding/removing products and continuing shopping.  
-   - Verifying cart updates and navigation functionality.  
+3. **Shopping Cart**
+   - Validating the initial state of an empty cart.
+   - Adding/removing products and continuing shopping.
+   - Verifying cart updates and navigation functionality.
 
-4. **Checkout Process**  
-   - Ensuring mandatory fields are required.  
-   - Validating initial and canceled states at each stage of checkout.  
-   - Providing an overview of selected products before purchase.  
+4. **Checkout Process**
+   - Ensuring mandatory fields are required.
+   - Validating initial and canceled states at each stage of checkout.
+   - Providing an overview of selected products before purchase.
 
-5. **Burger Menu**  
-   - Validating navigation options such as logout, "All Items," and "About."  
-   - Handling the menu in different contexts, e.g., cart and checkout pages.  
-   - Ensuring state reset functionality works as intended.  
+5. **Burger Menu**
+   - Validating navigation options such as logout, "All Items," and "About."
+   - Handling the menu in different contexts, e.g., cart and checkout pages.
+   - Ensuring state reset functionality works as intended.
 
 Each test is designed to ensure coverage of happy paths, edge cases, and negative scenarios.
 
@@ -112,9 +112,8 @@ The suite is built using the following technologies:
    ```
    Then click on the link to view the report in the browser
 ---
+
 ### Hosted Allure Report
-
-
 For executions triggered by [GitHub Actions](https://github.com/GinaKompocholi/ecommerce-ui-automation/actions/workflows/run_ui_tests.yml), Allure report is automatically generated and hosted online.
 You can view the latest CI-generated report [here](https://ginakompocholi.github.io/ecommerce-ui-automation/)
 ---

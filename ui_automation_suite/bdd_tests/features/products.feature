@@ -69,5 +69,7 @@ Feature: Products page
 
   @product_details_page
   Scenario: User views product details
+    When user tries to login with standard_user
+    Then user is redirected to the products page
     When user views product details for product Backpack
     Then user is redirected to the product details page

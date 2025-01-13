@@ -61,7 +61,7 @@ Feature: Checkout
     And the price of product Onesie is $7.99 in the Checkout
     And the full name of product Onesie displayed is Sauce Labs Onesie in the Checkout
     When user clicks on Cancel
-    Then user lands on checkout Information
+    Then user is redirected to the products page
 
   # Expected: All mandatory fields (First Name, Last Name, Postal Code) must be filled to proceed.
   # Actual: Last Name is not required, allowing users to continue with incomplete information.
