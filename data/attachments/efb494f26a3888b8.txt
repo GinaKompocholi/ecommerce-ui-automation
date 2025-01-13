@@ -1,1 +1,0 @@
-Step failed: A trace zip file was produced. Head over to https://trace.playwright.dev/ and drag & drop the file
