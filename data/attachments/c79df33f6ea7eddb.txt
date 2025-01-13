@@ -1,0 +1,15 @@
+INFO     root:common_steps.py:46 Login page is displayed
+INFO     root:page_helpers.py:58 Redirection successful to URL: https://www.saucedemo.com/inventory.html
+INFO     root:common_steps.py:81 User was redirected to the products page
+INFO     root:common_steps.py:152 burger menu button is visible and menu is closed
+INFO     root:common_steps.py:186 User proceeds to the cart
+INFO     root:common_steps.py:152 burger menu button is visible and menu is closed
+INFO     root:test_sidemenu.py:16 User opened the burger menu
+INFO     root:test_sidemenu.py:29 The menu contains all 4 categories
+INFO     root:test_sidemenu.py:36 User closed the burger menu
+INFO     root:common_steps.py:152 burger menu button is visible and menu is closed
+INFO     root:common_steps.py:192 User proceeded to checkout
+INFO     root:test_sidemenu.py:16 User opened the burger menu
+INFO     root:test_sidemenu.py:29 The menu contains all 4 categories
+INFO     root:test_sidemenu.py:36 User closed the burger menu
+INFO     root:common_steps.py:152 burger menu button is visible and menu is closed

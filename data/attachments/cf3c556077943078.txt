@@ -1,0 +1,13 @@
+INFO     root:common_steps.py:46 Login page is displayed
+INFO     root:page_helpers.py:58 Redirection successful to URL: https://www.saucedemo.com/inventory.html
+INFO     root:common_steps.py:81 User was redirected to the products page
+INFO     root:common_steps.py:124 Onesie was added to the cart
+INFO     root:common_steps.py:186 User proceeds to the cart
+INFO     root:common_steps.py:143 The cart displays 1 item(s), reflecting the correct total.
+INFO     root:common_steps.py:192 User proceeded to checkout
+INFO     root:test_checkout.py:84 User landed on 'Checkout: Information' page
+INFO     root:test_checkout.py:35 User clicked on Continue button
+INFO     root:test_checkout.py:54 Displayed error message: Error: First Name is required
+INFO     root:test_checkout.py:29 user fills in first name
+INFO     root:test_checkout.py:35 User clicked on Continue button
+INFO     root:test_checkout.py:54 Displayed error message: Error: Postal Code is required

@@ -1,0 +1,6 @@
+INFO     root:common_steps.py:46 Login page is displayed
+INFO     root:page_helpers.py:58 Redirection successful to URL: https://www.saucedemo.com/inventory.html
+INFO     root:common_steps.py:81 User was redirected to the products page
+INFO     root:common_steps.py:88 Validation started: 6 product(s) found on the page.
+INFO     root:common_steps.py:108 All products are fully visible with all attributes
+INFO     root:common_steps.py:124 Bike Light was added to the cart

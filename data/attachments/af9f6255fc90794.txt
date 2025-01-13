@@ -1,0 +1,10 @@
+INFO     root:common_steps.py:46 Login page is displayed
+INFO     root:page_helpers.py:58 Redirection successful to URL: https://www.saucedemo.com/inventory.html
+INFO     root:common_steps.py:81 User was redirected to the products page
+INFO     root:common_steps.py:152 burger menu button is visible and menu is closed
+INFO     root:common_steps.py:124 Backpack was added to the cart
+INFO     root:common_steps.py:143 The cart displays 1 item(s), reflecting the correct total.
+INFO     root:test_sidemenu.py:16 User opened the burger menu
+INFO     root:test_sidemenu.py:48 User selected Reset App State from the burger menu
+INFO     root:common_steps.py:131 The cart displays no item(s), reflecting the correct total.
+INFO     root:common_steps.py:88 Validation started: 6 product(s) found on the page.

@@ -1,0 +1,14 @@
+INFO     root:common_steps.py:46 Login page is displayed
+INFO     root:page_helpers.py:58 Redirection successful to URL: https://www.saucedemo.com/inventory.html
+INFO     root:common_steps.py:81 User was redirected to the products page
+INFO     root:common_steps.py:124 Bike Light was added to the cart
+INFO     root:common_steps.py:186 User proceeds to the cart
+INFO     root:common_steps.py:143 The cart displays 1 item(s), reflecting the correct total.
+INFO     root:common_steps.py:207 The shopping cart contains 1 product(s)
+INFO     root:common_steps.py:226 Product Bike Light is displayed in the Shopping cart
+INFO     root:common_steps.py:328 The name of product Bike Light in the Shopping cart is 'Sauce Labs Bike Light'
+INFO     root:common_steps.py:247 Product Bike Light quantity displayed in Shopping cart is as expected.
+INFO     root:common_steps.py:270 Product Bike Light price displayed in Shopping cart is as expected.
+INFO     root:common_steps.py:288 User can remove product Bike Light from the Shopping cart
+INFO     root:test_shopping_cart.py:31 User can continue shopping
+INFO     root:test_shopping_cart.py:23 User can proceed to first checkout step

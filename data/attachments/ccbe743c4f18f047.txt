@@ -1,0 +1,1 @@
+INFO     root:common_steps.py:46 Login page is displayed

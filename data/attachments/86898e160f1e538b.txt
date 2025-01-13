@@ -1,7 +1,0 @@
-INFO     root:common_steps.py:44 Login page is displayed
-INFO     root:page_helpers.py:57 Redirection successful to URL: https://www.saucedemo.com/inventory.html
-INFO     root:common_steps.py:79 User was redirected to the products page
-INFO     root:common_steps.py:189 User proceeds to the cart
-INFO     root:common_steps.py:129 The cart displays no item(s), reflecting the correct total.
-INFO     root:common_steps.py:210 The shopping cart contains 0 product(s)
-INFO     root:test_shopping_cart.py:31 User can continue shopping
