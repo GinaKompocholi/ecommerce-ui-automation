@@ -1,9 +1,7 @@
 import logging
-from typing import Union
 
 from pytest_bdd import given, parsers, then, when
 
-from ui_automation_suite.bdd_tests.page_objects.checkout_page import CheckoutPage
 from ui_automation_suite.bdd_tests.page_objects.login_page import LoginPage
 from ui_automation_suite.bdd_tests.page_objects.products_page import ProductPage
 from ui_automation_suite.bdd_tests.page_objects.shopping_cart_page import (
@@ -184,16 +182,8 @@ def proceed_to_checkout(shopping_cart_page: ShoppingCartPage):
 
 @then(parsers.cfparse("the {page_name} contains {cart_items_count:d} product(s)"))
 def cart_contains_products(page_name: str, cart_items_count: int, page):
-    # Declare the type of page_obj as a union of possible page types
-    page_obj: Union[ShoppingCartPage, CheckoutPage]
-
-    # Dynamically instantiate the correct page
-    if page_name.lower() == "shopping cart":
-        page_obj = ShoppingCartPage(page)
-    elif page_name.lower() == "checkout":
-        page_obj = CheckoutPage(page)
-    else:
-        raise ValueError(f"Unknown page name: {page_name.lower()}")
+    # Get the page object
+    page_obj = get_page_object(page_name, page)
 
     # Use the cart_list component to validate
     cart_list = page_obj.cart_list

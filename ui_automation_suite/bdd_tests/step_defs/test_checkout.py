@@ -51,6 +51,7 @@ def click_shopping_cart_icon(checkout_page: CheckoutPage):
 def add_product_to_cart(mandatory_field, checkout_page: CheckoutPage):
     assert checkout_page.error_displayed(), "Error message is not displayed"
     displayed_error_message = checkout_page.get_displayed_error_message()
+    logging.info(f"Displayed error message: {displayed_error_message}")
 
     error_messages = {
         "First Name": "Error: First Name is required",
@@ -59,10 +60,9 @@ def add_product_to_cart(mandatory_field, checkout_page: CheckoutPage):
     }
     expected_error_message = error_messages[mandatory_field]
 
-    assert expected_error_message == displayed_error_message, (
-        f"Expected error message: {expected_error_message} |"
-        f"Displayed error message: {displayed_error_message}"
-    )
+    assert (
+        expected_error_message == displayed_error_message
+    ), f"Expected: '{expected_error_message}' | Displayed: '{displayed_error_message}'"
 
 
 @then(parsers.cfparse("user lands on checkout {checkout_name}"))

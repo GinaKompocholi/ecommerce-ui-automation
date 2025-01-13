@@ -13,7 +13,7 @@ class CheckoutPage(BasePage):
     FIRST_NAME = "[data-test='firstName']"
     LAST_NAME = "[data-test='lastName']"
     POSTAL_CODE = "[data-test='postalCode']"
-    ERROR_BUTTON = "[data-test='error-button']"
+    ERROR_MESSAGE = "[data-test='error']"
 
     MANDATORY_FIELDS = {
         "first name": FIRST_NAME,
@@ -72,10 +72,10 @@ class CheckoutPage(BasePage):
         self.page.click(self.FINISH_BUTTON)
 
     def error_displayed(self):
-        return self.page.is_visible(self.ERROR_BUTTON)
+        return self.page.is_visible(self.ERROR_MESSAGE)
 
     def get_displayed_error_message(self):
-        return self.page.text_content(self.ERROR_BUTTON)
+        return self.page.text_content(self.ERROR_MESSAGE)
 
     def get_displayed_page_title(self):
         return self.page.text_content(self.PAGE_TITLE)
