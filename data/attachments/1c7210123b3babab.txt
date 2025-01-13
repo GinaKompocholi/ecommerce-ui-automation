@@ -1,0 +1,14 @@
+INFO     root:common_steps.py:44 Login page is displayed
+INFO     root:page_helpers.py:57 Redirection successful to URL: https://www.saucedemo.com/inventory.html
+INFO     root:common_steps.py:79 User was redirected to the products page
+INFO     root:common_steps.py:122 Onesie was added to the cart
+INFO     root:common_steps.py:189 User proceeds to the cart
+INFO     root:common_steps.py:141 The cart displays 1 item(s), reflecting the correct total.
+INFO     root:common_steps.py:195 User proceeded to checkout
+INFO     root:test_checkout.py:84 User landed on 'Checkout: Information' page
+INFO     root:test_checkout.py:47 User clicked on Shopping cart icon
+INFO     root:page_helpers.py:57 Redirection successful to URL: https://www.saucedemo.com/cart.html
+INFO     root:common_steps.py:195 User proceeded to checkout
+INFO     root:common_steps.py:141 The cart displays 1 item(s), reflecting the correct total.
+INFO     root:test_checkout.py:41 User clicked on Cancel button
+INFO     root:page_helpers.py:57 Redirection successful to URL: https://www.saucedemo.com/cart.html

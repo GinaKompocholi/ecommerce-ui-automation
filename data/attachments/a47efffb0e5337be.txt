@@ -1,2 +1,0 @@
-INFO     root:common_steps.py:39 Login page is displayed
-INFO     root:common_steps.py:64 User was redirected to the products page

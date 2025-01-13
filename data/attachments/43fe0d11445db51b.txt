@@ -1,0 +1,3 @@
+INFO     root:common_steps.py:44 Login page is displayed
+INFO     root:page_helpers.py:57 Redirection successful to URL: https://www.saucedemo.com/inventory.html
+INFO     root:common_steps.py:79 User was redirected to the products page

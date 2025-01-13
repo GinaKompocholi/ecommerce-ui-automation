@@ -1,0 +1,3 @@
+INFO     root:common_steps.py:44 Login page is displayed
+INFO     root:test_login.py:63 User sees an error message
+INFO     root:test_login.py:69 User remains on the login page
