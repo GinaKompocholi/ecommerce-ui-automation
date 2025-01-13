@@ -4,9 +4,7 @@ from ui_automation_suite.bdd_tests.page_objects.base_page import BasePage
 class ProductPage(BasePage):
     # LOCATORS
     INVENTORY_CONTAINER = "[data-test='inventory-container']"
-    TOTAL_INVENTORY = "div.inventory_list .inventory_item"
     SORT_BUTTON = "[data-test='product-sort-container']"
-    INVENTORY_LIST = "[data-test='inventory-list']"
     INVENTORY_ITEMS = "[data-test='inventory-item']"
     INVENTORY_ITEM_NAME = "[data-test='inventory-item-name']"
     INVENTORY_ITEM_PRICE = "[data-test='inventory-item-price']"
@@ -104,9 +102,8 @@ class ProductPage(BasePage):
         button = product.query_selector(self.INVENTORY_ITEM_REMOVE_FROM_CART_BUTTON)
         return button is not None and button.is_visible()
 
-    def get_specific_product(self, product_to_add):
-        products = self.get_all_products()
-        for product in products:
+    def get_specific_product(self, product_to_add, all_products):
+        for product in all_products:
             product_name = (
                 product.query_selector(self.INVENTORY_ITEM_NAME).text_content().strip()
             )

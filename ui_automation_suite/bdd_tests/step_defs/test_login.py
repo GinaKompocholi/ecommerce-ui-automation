@@ -36,7 +36,7 @@ def login_with_missing_password(
 
 
 @then(parsers.cfparse("{errortype} error message is displayed"))
-def products_are_displayed(errortype, page, login_page: LoginPage):
+def error_message_is_displayed(errortype, page, login_page: LoginPage):
     assert errortype in [
         "locked out",
         "invalid creds",

@@ -12,13 +12,31 @@ The goal of this project is to showcase:
 
 ## Features Tested
 This automation suite validates critical functionalities of the [SauceDemo](https://www.saucedemo.com/) website:
-1. **Authentication**: Login and logout functionality.
-2. **Products Page**: Verifying product listings and navigation.
-3. **Add to Cart**: Adding items to the shopping cart.
-4. **Checkout**: Completing the checkout process.
-5. **Burger Menu**: Validating navigation options.
+1. **Authentication**
+   - Login and logout functionalities.
+   - Handling invalid credentials and missing input scenarios.
+   - Addressing performance issues, such as long login times.
 
-Each test is designed to ensure coverage of happy paths, edge cases, and negative scenarios.
+2. **Products Page**
+   - Verification of product listings and navigation.
+   - Sorting products by name and price.
+   - Adding/removing products to/from the cart.
+   - Viewing product details.
+
+3. **Shopping Cart**
+   - Validating the initial state of an empty cart.
+   - Adding/removing products and continuing shopping.
+   - Verifying cart updates and navigation functionality.
+
+4. **Checkout Process**
+   - Ensuring mandatory fields are required.
+   - Validating initial and canceled states at each stage of checkout.
+   - Providing an overview of selected products before purchase.
+
+5. **Burger Menu**
+   - Validating navigation options such as logout, "All Items," and "About."
+   - Handling the menu in different contexts, e.g., cart and checkout pages.
+   - Ensuring state reset functionality works as intended.
 
 ---
 
@@ -64,15 +82,31 @@ The suite is built using the following technologies:
 - **CI/CD**: GitHub Actions
 - **Code Quality**: pre-commit hooks (`black`, `isort`) for linting and formatting
 - **Logging**: Python logging for debugging insights
+---
+## Setup and Execution
+
+### Option1: Running Tests in CI
+
+The test suite is integrated with GitHub Actions for Continuous Integration (CI).  
+- **Trigger CI Tests**: 
+  - automatically on pull requests 
+  - manually via [GitHub Actions Workflows](https://github.com/GinaKompocholi/ecommerce-ui-automation/actions/workflows/run_ui_tests.yml)
+- **View Results**:
+  - [Github Pages]:
+    - an Allure report is automatically generated and hosted [here](https://ginakompocholi.github.io/ecommerce-ui-automation/). 
+    - ⚠️Note: Only the latest execution's report will be displayed️
+  - [Github Artifacts]:
+    - the Allure report is also stored as an artifact in the respective GitHub Actions run. You can download and view the report locally.
 
 ---
 
-## Setup and Execution
-### Prerequisites
+### Option2: Running Tests Locally
+
+#### - Prerequisites
 - Python 3.11 or later installed.
 - Poetry installed (for dependency management).
 
-### Steps to Run tests locally
+#### - Steps to Run tests locally
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/yourusername/ecommerce-ui-automation.git
@@ -88,17 +122,11 @@ The suite is built using the following technologies:
     ```
 4. **View the report**:
    ```bash
-   make view-report
+   make generate-and-view-report
    ```
-   Then click on the link to view the report in the browser
----
-### Hosted Allure Report
+5. Click on the link to view the report in the browser
 
-
-For executions triggered via CI (e.g., [GitHub Actions](https://github.com/GinaKompocholi/ecommerce-ui-automation/actions/workflows/run_ui_tests.yml)), an Allure report is automatically generated and hosted online.
-You can view the latest CI-generated report [here](https://ginakompocholi.github.io/ecommerce-ui-automation/)
----
-### Ways to Run Tests
+#### - Ways to Run Tests
 
 The test suite offers various execution modes for flexibility.
 
@@ -150,6 +178,10 @@ The test suite offers various execution modes for flexibility.
 - **Pre-commit Hooks**: Ensures code quality with tools like `black` and `isort`.
 
 ### Future Improvements
-- **Add Edge Case Validations**: For scenarios like invalid user inputs, system timeouts, and performance under load.
-- **Expand Cross-Browser Testing**: Include support for multiple browsers (e.g., Firefox, Safari) and mobile platforms.
-- **Integrate Visual Testing**: Automate visual regressions to catch UI inconsistencies.
+- **Integrate Visual Testing**: Automate visual regression testing to detect UI inconsistencies and layout shifts effectively.
+- **Extend Test Coverage**: Add more test scenarios for edge cases and negative paths.
+- **Parallelize Test Execution Across Browsers**: Optimize test runtime by running tests simultaneously in multiple browsers (e.g., Chrome, Firefox, Safari).
+- **Automate Local Report Management**: Implement a local mechanism to keep only the latest test report for easy access while automatically deleting older reports to reduce clutter.
+- **Centralize Report Storage for Historical Analysis**:  Implement a system to upload and store test results in a centralized location (e.g., S3 bucket, database, or CI tool dashboard) to maintain a history of test executions, allowing trend analysis and debugging over time.
+- **Cross-Device Testing**: Extend test suite to simulate and verify functionality across different device types (e.g. mobile, tablet)
+- **Standardized Assertion Library**: Create a dedicated and reusable library for assertion comparisons to promote consistency, maintainability, and readability across tests.

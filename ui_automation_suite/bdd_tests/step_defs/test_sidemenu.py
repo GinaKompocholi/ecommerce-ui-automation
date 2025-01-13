@@ -2,7 +2,7 @@ import logging
 
 from pytest_bdd import parsers, scenarios, then, when
 
-from ui_automation_suite.bdd_tests.page_objects.sidebar import BurgerMenu
+from ui_automation_suite.bdd_tests.page_objects.burger_menu import BurgerMenu
 from ui_automation_suite.settings.constants import ABOUT_PAGE
 
 # Link to the feature file
@@ -14,6 +14,19 @@ def open_burger_menu(burgermenu_page: BurgerMenu):
     burgermenu_page.click_on_burger_menu()
     assert burgermenu_page.burger_menu_is_open(), "Burger menu is not open"
     logging.info("User opened the burger menu")
+
+
+@then(parsers.cfparse("the menu contains all 4 categories"))
+def menu_contains_all_categories(burgermenu_page: BurgerMenu):
+    assert burgermenu_page.menu_item_is_displayed(
+        "All Items"
+    ), "All Items is not displayed"
+    assert burgermenu_page.menu_item_is_displayed("About"), "About is not displayed"
+    assert burgermenu_page.menu_item_is_displayed("Logout"), "Logout is not displayed"
+    assert burgermenu_page.menu_item_is_displayed(
+        "Reset App State"
+    ), "Reset App State is not displayed"
+    logging.info("The menu contains all 4 categories")
 
 
 @when(parsers.cfparse("user closes the burger menu"))

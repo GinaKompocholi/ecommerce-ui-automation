@@ -1,11 +1,12 @@
 import pytest
 
+from ui_automation_suite.bdd_tests.page_objects.burger_menu import BurgerMenu
+from ui_automation_suite.bdd_tests.page_objects.checkout_page import CheckoutPage
 from ui_automation_suite.bdd_tests.page_objects.login_page import LoginPage
 from ui_automation_suite.bdd_tests.page_objects.products_page import ProductPage
 from ui_automation_suite.bdd_tests.page_objects.shopping_cart_page import (
     ShoppingCartPage,
 )
-from ui_automation_suite.bdd_tests.page_objects.sidebar import BurgerMenu
 
 
 @pytest.fixture()
@@ -30,3 +31,9 @@ def burgermenu_page(page):
 def shopping_cart_page(page):
     shopping_cart_page = ShoppingCartPage(page)
     return shopping_cart_page
+
+
+@pytest.fixture()
+def checkout_page(page):
+    checkout_page = CheckoutPage(page)
+    return checkout_page

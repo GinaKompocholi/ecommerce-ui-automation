@@ -10,7 +10,7 @@ PORT = 8000
 help:
 	@echo "Makefile commands:"
 	@echo "  make test         Run tests and generate Allure results"
-	@echo "  make view-report  Generate and open Allure HTML report"
+	@echo "  make generate-and-view-report  Generate and open Allure HTML report"
 
 # Run tests with a marker in headless mode
 test:
@@ -34,6 +34,6 @@ generate-report:
 	allure generate $(ALLURE_RESULTS_DIR) -o $(ALLURE_REPORT_DIR) --clean
 
 # Generate & view Allure report
-generate-view-report: generate-report
+generate-and-view-report: generate-report
 	@echo "Click here to view the report: http://localhost:$(PORT)/index.html"
 	python3 -m http.server $(PORT) --directory $(ALLURE_REPORT_DIR)
