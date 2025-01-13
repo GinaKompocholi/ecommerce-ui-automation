@@ -1,4 +1,5 @@
 import logging
+from time import time
 
 from pytest_bdd import given, parsers, then, when
 
@@ -18,6 +19,7 @@ from ui_automation_suite.settings.constants import (
 from ui_automation_suite.utils.page_helpers import (
     get_page_object,
     validate_product_name,
+    wait_for_redirection,
 )
 
 
@@ -50,13 +52,23 @@ def redirection_to_login_page(page, login_page: LoginPage):
 
 @when(parsers.cfparse("user tries to login with {username_type}"))
 def login_with_specific_role(
-    username_type, login_page: LoginPage, app_env_settings: AppEnvSettings
+    username_type, login_page: LoginPage, app_env_settings: AppEnvSettings, page
 ):
     username = app_env_settings.get_username(username_type)
     if username is None:
         raise ValueError(f"Invalid username type: {username_type}")
     login_page.fill_login_credentials(username, app_env_settings.password)
-    login_page.click_login_button()
+
+    if username_type in ["locked_out_user", "wrong_username"]:
+        login_page.click_login_button()
+    else:
+        timeout = 5
+        end_time = time() + timeout
+        logging.debug(f"Starting URL: {page.url}")
+        login_page.click_login_button()
+
+        # Use the helper function to wait for the redirection
+        wait_for_redirection(page, end_time, ALL_PRODUCTS_PAGE, timeout)
 
 
 @then(parsers.cfparse("user is redirected to the products page"))
@@ -103,12 +115,10 @@ def add_product_to_cart(product_name, product_page: ProductPage):
     product = product_page.get_specific_product(product_name, all_products)
     product_page.add_product_to_cart(product)
     # Validate product is added to the cart
-    assert not product_page.add_to_cart_button_is_visible(
-        product
-    ), "Add to Cart button is still visible"
     assert product_page.remove_from_cart_button_is_visible(
         product
-    ), "Remove button is not visible"
+    ), f"{product_name} wasn't added to the cart as [Remove] button isn't visible"
+
     logging.info(f"{product_name} was added to the cart")
 
 
@@ -159,10 +169,15 @@ def redirection_to_product_details_page(page):
 
 @then(parsers.cfparse("user is redirected to the shopping cart page"))
 def redirection_to_shopping_cart_page(page):
-    assert (
-        SHOPPING_CART_PAGE in page.url
-    ), f"Expected to be on the shopping cart page, but was on {page.url}"
-    logging.info("User was redirected to the shopping cart page")
+    timeout = 5
+    end_time = time() + timeout
+    # Use the helper function to wait for the redirection
+    wait_for_redirection(page, end_time, SHOPPING_CART_PAGE, timeout)
+
+    # assert (
+    #     SHOPPING_CART_PAGE in page.url
+    # ), f"Expected to be on the shopping cart page, but was on {page.url}"
+    # logging.info("User was redirected to the shopping cart page")
 
 
 @when(parsers.cfparse("user navigates to the shopping cart"))

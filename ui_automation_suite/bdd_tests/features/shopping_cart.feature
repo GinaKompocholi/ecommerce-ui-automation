@@ -6,12 +6,13 @@ Feature: Shopping cart
     When user tries to login with standard_user
     Then user is redirected to the products page
 
-  # FAILS as user should not be able to proceed to checkout with an empty cart
-  @shopping_cart_initial_state @empty_cart @fails
-  Scenario: Verify the initial state of an empty shopping cart
+  # Expected: Proceed to checkout is disabled when the cart is empty.
+  # Actual: Proceed to checkout is enabled, allowing an empty cart to move to checkout.
+  @shopping_cart_initial_state @empty_cart @bug
+  Scenario: [BUG] Verify the initial state of an empty shopping cart
     When user navigates to the shopping cart
     Then the cart icon displays 0 product(s)
-    Then the cart contains 0 product(s)
+    Then the shopping cart contains 0 product(s)
     And user can continue shopping
     And user can't proceed to first checkout step
 
@@ -25,7 +26,7 @@ Feature: Shopping cart
     And the full name of product Bike Light displayed is Sauce Labs Bike Light in the Shopping cart
     And the quantity of product Bike Light is 1 in the Shopping cart
     And the price of product Bike Light is $9.99 in the Shopping cart
-    And user can remove product Bike Light from the cart
+    And user can remove product Bike Light from the Shopping cart
     And user can continue shopping
     And user can proceed to first checkout step
 
@@ -38,6 +39,6 @@ Feature: Shopping cart
     When user adds product Bolt T-Shirt to the cart
     And user navigates to the shopping cart
     Then the cart icon displays 2 product(s)
-    When user removes product Bolt T-Shirt from the shopping cart
+    When user removes product Bolt T-Shirt from the Shopping cart
     Then the cart icon displays 1 product(s)
-    And the cart contains 1 product(s)
+    And the shopping cart contains 1 product(s)

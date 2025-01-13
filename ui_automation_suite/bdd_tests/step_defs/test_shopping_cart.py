@@ -15,11 +15,11 @@ def checkout_possibility(rule, shopping_cart_page: ShoppingCartPage):
     if rule == "can":
         assert (
             shopping_cart_page.cart_checkout_is_displayed()
-        ), "Checkout button is not displayed"
+        ), "Checkout button is not displayed when it should be"
     else:
         assert (
             not shopping_cart_page.cart_checkout_is_displayed()
-        ), "Checkout button is displayed"
+        ), "Checkout button is displayed when it should not be"
     logging.info(f"User {rule} proceed to first checkout step")
 
 

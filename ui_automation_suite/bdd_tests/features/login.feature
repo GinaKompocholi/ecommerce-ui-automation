@@ -16,8 +16,8 @@ Feature: Authentication
     And the user remains on the login page
 
     Examples:
-      | username        | error_message       |
-      | locked_out_user | locked out          |
+      | username        | error_message |
+      | locked_out_user | locked out    |
       | wrong_username  | invalid creds |
 
   @missing_credentials @negative
@@ -31,8 +31,11 @@ Feature: Authentication
       | username   | missing username |
       | password   | missing password |
 
-#  TODO: Add performance test
-#  @performance_glitch_user
-#  Scenario: User can't log in without providing password
-#    When user tries to login with username performance_glitch_user and password secret_sauce
-#    Then user is redirected to the products page
+  # Expected: User logs in within acceptable time limits.
+  # Actual: Login takes too long with performance_glitch_user.
+  @performance_glitch_user @bug
+  Scenario: [BUG] User logs in
+    When user tries to login with performance_glitch_user
+    Then user is redirected to the products page
+
+  # TODO: Add a visual test to verify button alignment on the products page.

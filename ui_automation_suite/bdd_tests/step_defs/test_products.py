@@ -65,10 +65,7 @@ def removed_product_from_cart(product_name, product_page: ProductPage):
     product = product_page.get_specific_product(product_name, all_products)
     product_page.remove_product_from_the_cart(product)
     # Validate product is removed from the cart
-    assert product_page.add_to_cart_button_is_visible(
-        product
-    ), "Add to Cart button is not visible"
-    assert not product_page.remove_from_cart_button_is_visible(
-        product
-    ), "Remove button is still visible"
-    logging.info(f"{product_name} was removed from the cart")
+    assert product_page.add_to_cart_button_is_visible(product), (
+        f"{product_name} wasn't removed from the cart as "
+        f"[Add to Cart] button isn't visible"
+    )

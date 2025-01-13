@@ -32,16 +32,6 @@ Feature: Burgermenu navigation
     And user closes the burger menu
     Then burger menu button is visible and menu is closed
 
-  # FAILS as buttons should be reset to default state (Add to cart)
-  @burgermenu_reset_app_state @fails
-  Scenario: User resets app state and the site returns to initial stage
-    When user adds product Backpack to the cart
-    Then the cart icon displays 1 product(s)
-    When user opens the burger menu
-    And user selects from menu Reset App State
-    Then the cart icon displays 0 product(s)
-    And all products are fully visible with all attributes
-
   @burgermenu_in_shopping_cart @burgermenu_in_checkout
   Scenario: User opens burger menu in shopping cart and checkout
     When user navigates to the shopping cart
@@ -55,3 +45,14 @@ Feature: Burgermenu navigation
     Then the menu contains all 4 categories
     When user closes the burger menu
     Then burger menu button is visible and menu is closed
+
+  # Expected: Resetting the app state reverts all buttons to their default state (Add to cart).
+  # Actual: Buttons remain in their modified state after resetting the app state.
+  @burgermenu_reset_app_state @bug
+  Scenario: [BUG] User resets app state
+    When user adds product Backpack to the cart
+    Then the cart icon displays 1 product(s)
+    When user opens the burger menu
+    And user selects from menu Reset App State
+    Then the cart icon displays 0 product(s)
+    And all products are fully visible with all attributes

@@ -150,6 +150,9 @@ The test suite offers various execution modes for flexibility.
 - **Pre-commit Hooks**: Ensures code quality with tools like `black` and `isort`.
 
 ### Future Improvements
-- **Add Edge Case Validations**: For scenarios like invalid user inputs, system timeouts, and performance under load.
-- **Expand Cross-Browser Testing**: Include support for multiple browsers (e.g., Firefox, Safari) and mobile platforms.
-- **Integrate Visual Testing**: Automate visual regressions to catch UI inconsistencies.
+- **Integrate Visual Testing**: Automate visual regression testing to detect UI inconsistencies and layout shifts effectively.
+- **Extend Test Coverage**: Add more test scenarios for edge cases and negative paths.
+- **Parallelize Test Execution Across Browsers**: Optimize test runtime by running tests simultaneously in multiple browsers (e.g., Chrome, Firefox, Safari). 
+- **Automate Local Report Management**: Implement a local mechanism to keep only the latest test report for easy access while automatically deleting older reports to reduce clutter.
+- **Centralize Report Storage for Historical Analysis**:  Implement a system to upload and store test results in a centralized location (e.g., S3 bucket, database, or CI tool dashboard) to maintain a history of test executions, allowing trend analysis and debugging over time.
+- **Cross-Device Testing**: Extend test suite to simulate and verify functionality across different device types (e.g. mobile, tablet)
