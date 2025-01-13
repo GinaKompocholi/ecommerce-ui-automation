@@ -104,9 +104,8 @@ class ProductPage(BasePage):
         button = product.query_selector(self.INVENTORY_ITEM_REMOVE_FROM_CART_BUTTON)
         return button is not None and button.is_visible()
 
-    def get_specific_product(self, product_to_add):
-        products = self.get_all_products()
-        for product in products:
+    def get_specific_product(self, product_to_add, all_products):
+        for product in all_products:
             product_name = (
                 product.query_selector(self.INVENTORY_ITEM_NAME).text_content().strip()
             )

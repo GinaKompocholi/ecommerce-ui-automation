@@ -16,6 +16,19 @@ def open_burger_menu(burgermenu_page: BurgerMenu):
     logging.info("User opened the burger menu")
 
 
+@then(parsers.cfparse("the menu contains all 4 categories"))
+def menu_contains_all_categories(burgermenu_page: BurgerMenu):
+    assert burgermenu_page.menu_item_is_displayed(
+        "All Items"
+    ), "All Items is not displayed"
+    assert burgermenu_page.menu_item_is_displayed("About"), "About is not displayed"
+    assert burgermenu_page.menu_item_is_displayed("Logout"), "Logout is not displayed"
+    assert burgermenu_page.menu_item_is_displayed(
+        "Reset App State"
+    ), "Reset App State is not displayed"
+    logging.info("The menu contains all 4 categories")
+
+
 @when(parsers.cfparse("user closes the burger menu"))
 def close_the_burger_menu(burgermenu_page: BurgerMenu):
     burgermenu_page.close_burger_menu()
