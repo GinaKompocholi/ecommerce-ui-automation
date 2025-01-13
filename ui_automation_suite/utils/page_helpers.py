@@ -45,6 +45,7 @@ def wait_for_redirection(page, end_time, expected_url, timeout=5, poll_interval=
     Helper function to wait for redirection to an expected URL.
 
     :param page: Playwright page object.
+    :param end_time: Time when the waiting should stop.
     :param expected_url: The URL to wait for redirection to.
     :param timeout: Maximum time to wait for the redirection, in seconds.
     :param poll_interval: Time interval for polling the URL, in seconds.

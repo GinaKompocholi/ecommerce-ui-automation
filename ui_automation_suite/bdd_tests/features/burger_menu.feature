@@ -1,5 +1,5 @@
-@regression @burgermenu
-Feature: Burgermenu navigation
+@regression @menu
+Feature: Menu navigation
 
   Background:
     Given the login page is displayed
@@ -7,7 +7,7 @@ Feature: Burgermenu navigation
     Then user is redirected to the products page
     Then burger menu button is visible and menu is closed
 
-  @burgermenu_logout @burgermenu_about
+  @menu_logout @menu_about
   Scenario: User chooses Logout and About from burger menu
     When user opens the burger menu
     And user selects from menu Logout
@@ -18,7 +18,7 @@ Feature: Burgermenu navigation
     And user selects from menu About
     Then user is redirected to the about page
 
-  @burgermenu_all_items
+  @menu_all_items
   Scenario: User chooses All Items from burger menu
     When user views product details for product Backpack
     Then user is redirected to the product details page
@@ -26,13 +26,13 @@ Feature: Burgermenu navigation
     And user selects from menu All Items
     Then user is redirected to the products page
 
-  @burgermenu_open_close
+  @menu_open_close
   Scenario: User opens and closes burger menu
     When user opens the burger menu
     And user closes the burger menu
     Then burger menu button is visible and menu is closed
 
-  @burgermenu_in_shopping_cart @burgermenu_in_checkout
+  @menu_in_shopping_cart @menu_in_checkout
   Scenario: User opens burger menu in shopping cart and checkout
     When user navigates to the shopping cart
     Then burger menu button is visible and menu is closed
@@ -48,7 +48,7 @@ Feature: Burgermenu navigation
 
   # Expected: Resetting the app state reverts all buttons to their default state (Add to cart).
   # Actual: Buttons remain in their modified state after resetting the app state.
-  @burgermenu_reset_app_state @bug
+  @menu_reset_app_state @bug
   Scenario: [BUG] User resets app state
     When user adds product Backpack to the cart
     Then the cart icon displays 1 product(s)

@@ -8,7 +8,7 @@ from ui_automation_suite.bdd_tests.page_objects.products_page import ProductPage
 from ui_automation_suite.bdd_tests.page_objects.shopping_cart_page import (
     ShoppingCartPage,
 )
-from ui_automation_suite.bdd_tests.page_objects.sidebar import BurgerMenu
+from ui_automation_suite.bdd_tests.page_objects.burger_menu import BurgerMenu
 from ui_automation_suite.settings.config import AppEnvSettings
 from ui_automation_suite.settings.constants import (
     ALL_PRODUCTS_PAGE,
@@ -21,6 +21,8 @@ from ui_automation_suite.utils.page_helpers import (
     validate_product_name,
     wait_for_redirection,
 )
+
+NO_PRODUCTS = "No products were displayed"
 
 
 def validate_standard_login_page_elements(page, login_page: LoginPage):
@@ -52,7 +54,7 @@ def redirection_to_login_page(page, login_page: LoginPage):
 
 @when(parsers.cfparse("user tries to login with {username_type}"))
 def login_with_specific_role(
-    username_type, login_page: LoginPage, app_env_settings: AppEnvSettings, page
+        username_type, login_page: LoginPage, app_env_settings: AppEnvSettings, page
 ):
     username = app_env_settings.get_username(username_type)
     if username is None:
@@ -74,7 +76,7 @@ def login_with_specific_role(
 @then(parsers.cfparse("user is redirected to the products page"))
 def redirection_to_homepage(page):
     assert (
-        ALL_PRODUCTS_PAGE in page.url
+            ALL_PRODUCTS_PAGE in page.url
     ), f"Expected to be on the products page, but was on {page.url}"
     logging.info("User was redirected to the products page")
 
@@ -82,7 +84,7 @@ def redirection_to_homepage(page):
 @then(parsers.cfparse("all products are fully visible with all attributes"))
 def products_are_displayed(page, product_page: ProductPage):
     products_displayed = product_page.get_all_products()
-    assert len(products_displayed) > 0, "No products were displayed"
+    assert len(products_displayed) > 0, NO_PRODUCTS
     logging.info(
         f"Validation started: {len(products_displayed)} product(s) found on the page."
     )
@@ -111,7 +113,7 @@ def add_product_to_cart(product_name, product_page: ProductPage):
     validate_product_name(product_name)
 
     all_products = product_page.get_all_products()
-    assert all_products, "No products were displayed"
+    assert all_products, NO_PRODUCTS
     product = product_page.get_specific_product(product_name, all_products)
     product_page.add_product_to_cart(product)
     # Validate product is added to the cart
@@ -154,7 +156,7 @@ def navigate_to_burger_menu(burgermenu_page: BurgerMenu):
 def view_product_details(product_name, product_page: ProductPage):
     validate_product_name(product_name)
     all_products = product_page.get_all_products()
-    assert all_products, "No products were displayed"
+    assert all_products, NO_PRODUCTS
     product = product_page.get_specific_product(product_name, all_products)
     product_page.click_on_product_name(product)
 
@@ -162,7 +164,7 @@ def view_product_details(product_name, product_page: ProductPage):
 @then(parsers.cfparse("user is redirected to the product details page"))
 def redirection_to_product_details_page(page):
     assert (
-        PRODUCT_DETAILS_PAGE in page.url
+            PRODUCT_DETAILS_PAGE in page.url
     ), f"Expected to be on the product details page, but was on {page.url}"
     logging.info("User was redirected to the products details page")
 
@@ -173,11 +175,6 @@ def redirection_to_shopping_cart_page(page):
     end_time = time() + timeout
     # Use the helper function to wait for the redirection
     wait_for_redirection(page, end_time, SHOPPING_CART_PAGE, timeout)
-
-    # assert (
-    #     SHOPPING_CART_PAGE in page.url
-    # ), f"Expected to be on the shopping cart page, but was on {page.url}"
-    # logging.info("User was redirected to the shopping cart page")
 
 
 @when(parsers.cfparse("user navigates to the shopping cart"))
@@ -205,7 +202,7 @@ def cart_contains_products(page_name: str, cart_items_count: int, page):
 
     total_cart_items = len(cart_list.get_all_cart_products())
     assert (
-        total_cart_items == cart_items_count
+            total_cart_items == cart_items_count
     ), f"Expected {cart_items_count} products, but got {total_cart_items}"
     logging.info(f"The {page_name} contains {cart_items_count:d} product(s)")
 
@@ -223,7 +220,7 @@ def product_is_displayed_in_cart(product_name: str, page_name: str, page):
     cart_list = page_obj.cart_list
 
     all_products = cart_list.get_all_cart_products()
-    assert all_products, "No products were displayed"
+    assert all_products, NO_PRODUCTS
     product = cart_list.get_specific_product(product_name, all_products)
     assert cart_list.product_name_is_visible(product), "Product name is not displayed"
     logging.info(f"Product {product_name} is displayed in the {page_name}")
@@ -241,11 +238,11 @@ def product_quantity_in_cart(product_name: str, quantity: int, page_name: str, p
     page_obj = get_page_object(page_name, page)
 
     all_products = page_obj.cart_list.get_all_cart_products()
-    assert all_products, "No products were displayed"
+    assert all_products, NO_PRODUCTS
     product = page_obj.cart_list.get_specific_product(product_name, all_products)
     product_quantity_in_cart = page_obj.cart_list.get_product_quantity(product)
     assert (
-        product_quantity_in_cart == quantity
+            product_quantity_in_cart == quantity
     ), f"Unexpected quantity of product in the {page_name}"
     logging.info(
         f"Product {product_name} quantity displayed in {page_name} is as expected."
@@ -262,7 +259,7 @@ def product_price_in_cart(product_name: str, price: str, page_name: str, page):
     page_obj = get_page_object(page_name, page)
 
     all_products = page_obj.cart_list.get_all_cart_products()
-    assert all_products, "No products were displayed"
+    assert all_products, NO_PRODUCTS
     product = page_obj.cart_list.get_specific_product(product_name, all_products)
     actual_price = page_obj.cart_list.get_product_price(product)
     expected_price = float(price.replace("$", ""))
@@ -283,7 +280,7 @@ def user_can_remove_product_from_cart(product_name: str, page_name: str, page):
     page_obj = get_page_object(page_name, page)
 
     all_products = page_obj.cart_list.get_all_cart_products()
-    assert all_products, "No products were displayed"
+    assert all_products, NO_PRODUCTS
     product = page_obj.cart_list.get_specific_product(product_name, all_products)
     assert page_obj.cart_list.remove_product_button_is_visible(
         product
@@ -299,7 +296,7 @@ def user_removes_product_from_cart(product_name: str, page_name: str, page):
     page_obj = get_page_object(page_name, page)
 
     all_products = page_obj.cart_list.get_all_cart_products()
-    assert all_products, "No products were displayed"
+    assert all_products, NO_PRODUCTS
     product = page_obj.cart_list.get_specific_product(product_name, all_products)
     page_obj.cart_list.remove_product_from_the_cart(product)
     logging.info(f"User removed product {product_name} from the {page_name}")
@@ -312,7 +309,7 @@ def user_removes_product_from_cart(product_name: str, page_name: str, page):
     )
 )
 def product_name_in_cart(
-    product_name: str, product_full_name: str, page_name: str, page
+        product_name: str, product_full_name: str, page_name: str, page
 ):
     # Validate the product name explicitly
     validate_product_name(product_name)
@@ -321,7 +318,7 @@ def product_name_in_cart(
 
     # Validate product full name
     all_products = page_obj.cart_list.get_all_cart_products()
-    assert all_products, "No products were displayed"
+    assert all_products, NO_PRODUCTS
     product = page_obj.cart_list.get_specific_product(product_name, all_products)
     actual_name = page_obj.cart_list.get_product_name(product)
     assert actual_name == product_full_name, (

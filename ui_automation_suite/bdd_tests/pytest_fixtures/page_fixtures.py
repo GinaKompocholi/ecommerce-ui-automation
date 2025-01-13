@@ -6,7 +6,7 @@ from ui_automation_suite.bdd_tests.page_objects.products_page import ProductPage
 from ui_automation_suite.bdd_tests.page_objects.shopping_cart_page import (
     ShoppingCartPage,
 )
-from ui_automation_suite.bdd_tests.page_objects.sidebar import BurgerMenu
+from ui_automation_suite.bdd_tests.page_objects.burger_menu import BurgerMenu
 
 
 @pytest.fixture()

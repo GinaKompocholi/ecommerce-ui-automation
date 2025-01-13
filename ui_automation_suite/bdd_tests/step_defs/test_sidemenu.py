@@ -2,7 +2,7 @@ import logging
 
 from pytest_bdd import parsers, scenarios, then, when
 
-from ui_automation_suite.bdd_tests.page_objects.sidebar import BurgerMenu
+from ui_automation_suite.bdd_tests.page_objects.burger_menu import BurgerMenu
 from ui_automation_suite.settings.constants import ABOUT_PAGE
 
 # Link to the feature file

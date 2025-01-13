@@ -4,9 +4,7 @@ from ui_automation_suite.bdd_tests.page_objects.base_page import BasePage
 class ProductPage(BasePage):
     # LOCATORS
     INVENTORY_CONTAINER = "[data-test='inventory-container']"
-    TOTAL_INVENTORY = "div.inventory_list .inventory_item"
     SORT_BUTTON = "[data-test='product-sort-container']"
-    INVENTORY_LIST = "[data-test='inventory-list']"
     INVENTORY_ITEMS = "[data-test='inventory-item']"
     INVENTORY_ITEM_NAME = "[data-test='inventory-item-name']"
     INVENTORY_ITEM_PRICE = "[data-test='inventory-item-price']"
