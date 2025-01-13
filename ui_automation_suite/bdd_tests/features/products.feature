@@ -10,7 +10,6 @@ Feature: Products page
   Scenario: Initial state of products page
     Then all products are fully visible with all attributes
     And products are displayed in ascending name order (A to Z)
-    And products are displayed in descending name order (A to Z)
     And the cart icon displays 0 product(s)
     And burger menu button is visible and menu is closed
 
